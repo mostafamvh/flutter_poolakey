@@ -136,16 +136,17 @@ class FlutterPoolakeyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             result.error("PURCHASE_FAILED", "In order to purchasing, connect to Poolakey!", null)
             return
         }
-
-        PaymentActivity.start(
-            activity,
-            command,
-            productId,
-            payment,
-            result,
-            payload,
-            dynamicPriceToken
-        )
+        try{
+            PaymentActivity.start(
+                activity,
+                command,
+                productId,
+                payment,
+                result,
+                payload,
+                dynamicPriceToken
+            )
+        }catch(e: Exception){}
     }
 
     private fun consume(purchaseToken: String, result: Result) {
